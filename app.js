@@ -1,7 +1,7 @@
 const express = require("express");
 const { check, validationResult } = require("express-validator");
 const app = express();
-const port = 3000;
+
 const query = require("./query.js");
 
 app.use(express.json()); //Body Parser
@@ -42,8 +42,8 @@ app.all("*", (req, res) => {
   res.status(405).json({ code: "2", msg: "Method Not Allowed!" });
 });
 
-app.listen(port, () => {
-  console.log(`Example app listening at http://localhost:${port}`)
+app.listen(process.env.PORT, () => {
+  console.log(`Example app listening at http://localhost:${process.env.PORT}`)
 })
 
 app.use(function (error, req, res, next) { //For all unexpected errors
