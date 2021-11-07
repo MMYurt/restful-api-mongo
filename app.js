@@ -11,7 +11,7 @@ app.post(
   [
     //Body Validation
     check("startDate").isDate().withMessage("Invalid startDate. You must pass a valid date (YYY-MM-DD) "),
-    check("endDate").isDate().withMessage("Invalid endDate. You must pass a valid endDate (YYY-MM-DD) "),
+    check("endDate").isDate().withMessage("Invalid endDate. You must pass a valid date (YYY-MM-DD) "),
     check("minCount").isInt().withMessage("Invalid minCount. You must pass a valid number"),
     check("maxCount").isInt().withMessage("Invalid maxCount. You must pass a valid number"),
   ],
@@ -25,7 +25,7 @@ app.post(
         res.json({ code: "0", msg: "Success", records: result });
       })
       .catch((err) => {
-        res.status(500).json({code: "3", msg: `${err.code}: ${err.codeName}`})    //MongoDB related errors
+        res.status(503).json({code: "3", msg: `${err.code}: ${err.codeName}`})    //MongoDB related errors
       });
   }
 );
